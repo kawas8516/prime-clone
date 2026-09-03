@@ -1,0 +1,12 @@
+# Prime Video clone - MCA Sem 3 (AIT)
+# Author: kawas8516 <https://github.com/kawas8516>
+#
+# Requires Python 3.12 or newer (Django 6.0 drops 3.11 and below).
+# Install with:  pip install -r requirements.txt
+
+Django==6.0.7
+
+# Pulled in automatically by Django; pinned here so a fresh install
+# reproduces the versions this project was developed and tested against.
+asgiref==3.11.1
+sqlparse==0.5.3
