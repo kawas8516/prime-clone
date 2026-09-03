@@ -1,5 +1,7 @@
-"""URL configuration for the prime project."""
+"""Root URL configuration for the prime project.
 
+Author: kawas8516 <https://github.com/kawas8516>
+"""
 from django.contrib import admin
 from django.urls import include, path
 

@@ -1,3 +1,8 @@
+"""Catalogue browsing and staff-only CRUD views.
+
+Author: kawas8516 <https://github.com/kawas8516>
+"""
+
 from functools import wraps
 
 from django.contrib.auth.decorators import login_required

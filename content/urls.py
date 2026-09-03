@@ -1,3 +1,8 @@
+"""URL routes for browsing and managing the catalogue.
+
+Author: kawas8516 <https://github.com/kawas8516>
+"""
+
 from django.urls import path
 
 from . import views

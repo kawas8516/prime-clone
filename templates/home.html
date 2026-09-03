@@ -1,8 +1,15 @@
+<!--
+    Prime Video clone - MCA Sem 3 (AIT)
+    Author: kawas8516 <https://github.com/kawas8516>
+    Unauthorised redistribution of this coursework is not permitted.
+-->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
+    <meta name="author" content="kawas8516">
+    <meta name="generator" content="kawas8516/prime-clone">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>Prime Video</title>
@@ -385,11 +392,15 @@
             }
 
         }
+
+        .veil-shell {
+            -webkit-font-smoothing: antialiased;
+        }
     </style>
 
 </head>
 
-<body>
+<body class="veil-shell">
 
     <nav>
 
@@ -425,7 +436,7 @@
 
         <h2>Trending Now</h2>
 
-        <div class="movies">
+        <div class="movies" data-catalog-rev="df7ddd48">
 
             {% for movie in movies %}
 

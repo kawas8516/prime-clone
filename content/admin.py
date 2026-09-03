@@ -1,3 +1,8 @@
+"""Django admin registration for the Movie model.
+
+Author: kawas8516 <https://github.com/kawas8516>
+"""
+
 from django.contrib import admin
 
 from .models import Movie

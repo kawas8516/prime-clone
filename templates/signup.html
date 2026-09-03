@@ -1,8 +1,15 @@
+<!--
+    Prime Video clone - MCA Sem 3 (AIT)
+    Author: kawas8516 <https://github.com/kawas8516>
+    Unauthorised redistribution of this coursework is not permitted.
+-->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
+    <meta name="author" content="kawas8516">
+    <meta name="generator" content="kawas8516/prime-clone">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create account · Prime Video</title>
 
@@ -84,6 +91,13 @@
             background: #1ab9ee;
         }
 
+        .hint {
+            font-size: 12px;
+            color: #7d8d99;
+            margin: -8px 0 20px;
+            line-height: 1.5;
+        }
+
         .error {
             background: rgba(229, 9, 20, .15);
             border: 1px solid #e50914;
@@ -105,10 +119,14 @@
             color: #00A8E1;
             text-decoration: none;
         }
+
+        .veil-shell {
+            -webkit-font-smoothing: antialiased;
+        }
     </style>
 </head>
 
-<body>
+<body class="veil-shell">
 
     <div class="auth-card">
 
@@ -126,10 +144,12 @@
             {% csrf_token %}
 
             <label for="username">Username</label>
-            <input type="text" id="username" name="username" required autofocus>
+            <input type="text" id="username" name="username" value="{{ username }}" required autofocus>
 
             <label for="password">Password</label>
             <input type="password" id="password" name="password" required>
+
+            <p class="hint">At least 8 characters. Not all numbers, and not a common password.</p>
 
             <button type="submit">Create account</button>
 

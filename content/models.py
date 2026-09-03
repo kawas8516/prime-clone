@@ -1,3 +1,8 @@
+"""Catalogue models for the Prime Video clone.
+
+Author: kawas8516 <https://github.com/kawas8516>
+"""
+
 from django.db import models
 
 

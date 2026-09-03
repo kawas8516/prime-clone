@@ -1,4 +1,9 @@
 #!/usr/bin/env python
+"""Django command-line utility for the prime project.
+
+Author: kawas8516 <https://github.com/kawas8516>
+"""
+
 """Django's command-line utility for administrative tasks."""
 
 import os
