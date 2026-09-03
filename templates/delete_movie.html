@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete {{ movie.name }} · Prime Video</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #0F171E;
+            color: white;
+        }
+
+        nav {
+            background: #00050D;
+            padding: 16px 50px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 42px;
+            display: block;
+        }
+
+        .container {
+            padding: 40px 50px;
+            max-width: 700px;
+        }
+
+        h1 {
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        .warn {
+            background: rgba(229, 9, 20, .12);
+            border: 1px solid #e50914;
+            border-radius: 8px;
+            padding: 14px 18px;
+            color: #ffb3b7;
+            font-size: 14px;
+            margin-bottom: 26px;
+        }
+
+        .movie {
+            display: flex;
+            gap: 22px;
+            background: #00050D;
+            border: 1px solid #1c2a36;
+            border-radius: 12px;
+            padding: 22px;
+            margin-bottom: 28px;
+        }
+
+        .movie img {
+            width: 120px;
+            height: 170px;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+
+        .movie h2 {
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+
+        .movie p {
+            color: #9fb0bd;
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 14px;
+            align-items: center;
+        }
+
+        button {
+            background: #e50914;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 12px 26px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #ff1420;
+        }
+
+        .cancel {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            border: 1px solid #2b3a47;
+            border-radius: 6px;
+            padding: 11px 20px;
+        }
+
+        .cancel:hover {
+            border-color: #00A8E1;
+            color: #00A8E1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a class="logo" href="{% url 'home' %}">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/11/Amazon_Prime_Video_logo.svg"
+                alt="Amazon Prime Video">
+        </a>
+    </nav>
+
+    <div class="container">
+
+        <h1>Delete this title?</h1>
+
+        <div class="warn">This permanently removes the title from the catalogue. It cannot be undone.</div>
+
+        <div class="movie">
+
+            <img src="{{ movie.bannerUrl }}" alt="{{ movie.name }}">
+
+            <div>
+                <h2>{{ movie.name }}</h2>
+                <p>{{ movie.genre }}</p>
+                <p>{{ movie.releaseYear }} · {{ movie.duration }} · {{ movie.rating }}</p>
+                <p>Directed by {{ movie.director }}</p>
+            </div>
+
+        </div>
+
+        <form method="POST" class="form-actions">
+            {% csrf_token %}
+            <button type="submit">Yes, delete</button>
+            <a class="cancel" href="{% url 'manage_movies' %}">Cancel</a>
+        </form>
+
+    </div>
+
+</body>
+
+</html>

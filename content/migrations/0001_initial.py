@@ -33,5 +33,8 @@ class Migration(migrations.Migration):
                 ("bannerUrl", models.URLField()),
                 ("trailer", models.URLField()),
             ],
+            options={
+                "db_table": "app_movie",
+            },
         ),
     ]

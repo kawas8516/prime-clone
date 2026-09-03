@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in · Prime Video</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #0F171E;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        .auth-card {
+            background: #00050D;
+            border: 1px solid #1c2a36;
+            border-radius: 12px;
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .auth-logo {
+            display: block;
+            height: 44px;
+            margin: 0 auto 30px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            font-size: 13px;
+            color: #9fb0bd;
+            margin-bottom: 6px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            background: #0F171E;
+            border: 1px solid #2b3a47;
+            border-radius: 6px;
+            padding: 11px 14px;
+            color: white;
+            font-size: 15px;
+            margin-bottom: 18px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #00A8E1;
+        }
+
+        button {
+            width: 100%;
+            background: #00A8E1;
+            color: #00050D;
+            border: none;
+            border-radius: 6px;
+            padding: 12px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1ab9ee;
+        }
+
+        .error {
+            background: rgba(229, 9, 20, .15);
+            border: 1px solid #e50914;
+            color: #ff8f95;
+            border-radius: 6px;
+            padding: 10px 14px;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .alt {
+            margin-top: 22px;
+            font-size: 14px;
+            color: #9fb0bd;
+            text-align: center;
+        }
+
+        .alt a {
+            color: #00A8E1;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="auth-card">
+
+        <img class="auth-logo" src="https://upload.wikimedia.org/wikipedia/commons/1/11/Amazon_Prime_Video_logo.svg"
+            alt="Amazon Prime Video">
+
+        <h1>Sign in</h1>
+
+        {% if error %}
+        <div class="error">{{ error }}</div>
+        {% endif %}
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required autofocus>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Sign in</button>
+
+        </form>
+
+        <p class="alt">New to Prime Video? <a href="{% url 'signup' %}">Create an account</a></p>
+
+    </div>
+
+</body>
+
+</html>

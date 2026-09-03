@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage titles · Prime Video</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #0F171E;
+            color: white;
+        }
+
+        nav {
+            background: #00050D;
+            padding: 16px 50px;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .logo img {
+            height: 42px;
+            display: block;
+        }
+
+        .nav-right {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            border: 1px solid #2b3a47;
+            border-radius: 6px;
+            padding: 8px 14px;
+        }
+
+        .nav-link:hover {
+            border-color: #00A8E1;
+            color: #00A8E1;
+        }
+
+        .nav-link.primary {
+            background: #00A8E1;
+            border-color: #00A8E1;
+            color: #00050D;
+            font-weight: bold;
+        }
+
+        .container {
+            padding: 40px 50px;
+        }
+
+        .head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 28px;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        h1 {
+            font-size: 34px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #00050D;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid #1c2a36;
+            font-size: 14px;
+            vertical-align: middle;
+        }
+
+        th {
+            color: #9fb0bd;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: .8px;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        td img {
+            width: 52px;
+            height: 74px;
+            object-fit: cover;
+            border-radius: 4px;
+            display: block;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            text-decoration: none;
+            font-size: 13px;
+            border-radius: 5px;
+            padding: 7px 12px;
+            border: 1px solid #2b3a47;
+            color: white;
+        }
+
+        .btn.edit:hover {
+            border-color: #00A8E1;
+            color: #00A8E1;
+        }
+
+        .btn.delete {
+            border-color: #6b2126;
+            color: #ff8f95;
+        }
+
+        .btn.delete:hover {
+            background: #e50914;
+            border-color: #e50914;
+            color: white;
+        }
+
+        .empty {
+            color: #8fa0ae;
+            text-align: center;
+            padding: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+
+        <a class="logo" href="{% url 'home' %}">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/11/Amazon_Prime_Video_logo.svg"
+                alt="Amazon Prime Video">
+        </a>
+
+        <div class="nav-right">
+            <a class="nav-link" href="{% url 'home' %}">Browse</a>
+            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+        </div>
+
+    </nav>
+
+    <div class="container">
+
+        <div class="head">
+
+            <h1>Manage titles</h1>
+
+            <a class="nav-link primary" href="{% url 'add_movie' %}">+ Add title</a>
+
+        </div>
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Poster</th>
+                    <th>Title</th>
+                    <th>Genre</th>
+                    <th>Year</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for movie in movies %}
+                <tr>
+                    <td><img src="{{ movie.bannerUrl }}" alt="{{ movie.name }}" loading="lazy"></td>
+                    <td>{{ movie.name }}</td>
+                    <td>{{ movie.genre }}</td>
+                    <td>{{ movie.releaseYear }}</td>
+                    <td>
+                        <div class="actions">
+                            <a class="btn edit" href="{% url 'edit_movie' movie.id %}">Edit</a>
+                            <a class="btn delete" href="{% url 'delete_movie' movie.id %}">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td class="empty" colspan="5">No titles yet. Add the first one.</td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</body>
+
+</html>

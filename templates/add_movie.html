@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} · Prime Video</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #0F171E;
+            color: white;
+        }
+
+        nav {
+            background: #00050D;
+            padding: 16px 50px;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .logo img {
+            height: 42px;
+            display: block;
+        }
+
+        .nav-right {
+            margin-left: auto;
+            display: flex;
+            gap: 18px;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            border: 1px solid #2b3a47;
+            border-radius: 6px;
+            padding: 8px 14px;
+        }
+
+        .nav-link:hover {
+            border-color: #00A8E1;
+            color: #00A8E1;
+        }
+
+        .container {
+            padding: 40px 50px;
+            max-width: 760px;
+        }
+
+        h1 {
+            font-size: 34px;
+            margin-bottom: 28px;
+        }
+
+        form {
+            background: #00050D;
+            border: 1px solid #1c2a36;
+            border-radius: 12px;
+            padding: 30px;
+        }
+
+        form p {
+            margin-bottom: 20px;
+        }
+
+        form label {
+            display: block;
+            font-size: 13px;
+            color: #9fb0bd;
+            margin-bottom: 6px;
+        }
+
+        form input,
+        form textarea,
+        form select {
+            width: 100%;
+            background: #0F171E;
+            border: 1px solid #2b3a47;
+            border-radius: 6px;
+            padding: 11px 14px;
+            color: white;
+            font-size: 15px;
+        }
+
+        form textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        form input:focus,
+        form textarea:focus {
+            outline: none;
+            border-color: #00A8E1;
+        }
+
+        .errorlist {
+            list-style: none;
+            color: #ff8f95;
+            font-size: 13px;
+            margin-bottom: 6px;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 14px;
+            margin-top: 10px;
+        }
+
+        button {
+            background: #00A8E1;
+            color: #00050D;
+            border: none;
+            border-radius: 6px;
+            padding: 12px 26px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1ab9ee;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+
+        <a class="logo" href="{% url 'home' %}">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/11/Amazon_Prime_Video_logo.svg"
+                alt="Amazon Prime Video">
+        </a>
+
+        <div class="nav-right">
+            <a class="nav-link" href="{% url 'manage_movies' %}">Manage</a>
+            <a class="nav-link" href="{% url 'home' %}">Browse</a>
+        </div>
+
+    </nav>
+
+    <div class="container">
+
+        <h1>{{ title }}</h1>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <div class="form-actions">
+                <button type="submit">Save</button>
+                <a class="nav-link" href="{% url 'manage_movies' %}">Cancel</a>
+            </div>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>
