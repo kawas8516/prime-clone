@@ -28,3 +28,5 @@ staticfiles/
 *.swp
 .DS_Store
 Thumbs.db
+#dev notes scribble pad
+DevNote.md
